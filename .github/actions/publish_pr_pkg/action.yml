@@ -10,7 +10,6 @@ inputs:
     required: true
 runs:
   using: composite
-  if: ${{ github.event.workflow_run.conclusion == 'success' }}
   steps:
     - name: Setup git
     - uses: actions/checkout@v2
