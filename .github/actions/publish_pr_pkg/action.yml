@@ -62,7 +62,6 @@ runs:
       if: env.PUBLISH_PR_ARTIFACT == 1
       shell: bash
       run: |
-        cd ${{ inputs.directory }}
         prNumber=${{ github.event.number }}
         shortRev=$(git rev-parse --short ${{ github.sha }})
         preId=PR${prNumber}.${shortRev}
