@@ -3,16 +3,17 @@ author: 'pi0neerpat'
 description: 'Publish a test package for each PR'
 inputs:
   token:
-    description: 'Repo scoped Personal Access Token with package:write permissions.'
+    description: 'For Github Registry: a Personal Access Token with packages:write permissions. For Npm registry: an npm Auth Token'
     required: true
   build-command:
     description: "Command to build run for each package"
     default: "yarn build"
-    required: false
   packages-directory:
     description: "Relative path to your package(s)"
     default: "packages"
-    required: false
+  registry:
+    description: "Which registry to publish to: github or npm"
+    default: "github"
 runs:
   using: composite
   steps:
@@ -110,7 +111,7 @@ runs:
       shell: bash
       run: |
         pr_number="${{ steps.pr.outputs.pr_number }}"
-        tasks/npmrc-use-github.sh > pr-packages/$pr_number/.npmrc # using PAT
+        tasks/npmrc-use-${{ inputs.registry }}.sh > pr-packages/$pr_number/.npmrc # using PAT
         cd pr-packages/$pr_number
         for f in `ls` ; do
           npm --userconfig .npmrc publish $f --tag "PR$pr_number"

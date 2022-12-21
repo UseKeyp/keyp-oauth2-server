@@ -19,5 +19,9 @@
     "nodemon": "^2.0.20"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/usekeyp/oauth2-server.git"
+  }
 }
