@@ -17,4 +17,7 @@ jobs:
 
       - name: Publish Package
         uses: ./.github/actions/publish_pr_pkg
+        with:
+          token: ${{ secrets.PAT }}
+          # build-command: "yarn build"
 
