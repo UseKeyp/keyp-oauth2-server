@@ -46,7 +46,7 @@ runs:
 
     - name: Check changeset
       shell: bash
-      run: tasks/check-changeset.sh ${{ github.sha }} dev
+      run: tasks/check-changeset.sh ${{ github.sha }} ${{ github.base_ref }}
 
     - name: Install dependencies
       if: env.PUBLISH_PR_ARTIFACT == 1
