@@ -54,9 +54,11 @@ runs:
       run: yarn install --immutable
 
     - name: Build package
-      # TODO: run command from input
       shell: bash
-      run: cd ${{ inputs.directory }} && yarn build
+      run: |
+        for d in ${{ inputs.packages-directory}}/*/ ; do (
+          cd "$d" && yarn build
+        ) done
 
     - name: Setup PR package versions locally
       if: env.PUBLISH_PR_ARTIFACT == 1
