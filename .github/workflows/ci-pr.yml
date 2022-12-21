@@ -19,5 +19,6 @@ jobs:
         uses: ./.github/actions/publish_pr_pkg
         with:
           token: ${{ secrets.PAT }}
+          directory: packages/oauth2-server
           # build-command: "yarn build"
 

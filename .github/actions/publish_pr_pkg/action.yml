@@ -12,6 +12,10 @@ inputs:
     description: "Command to build the package"
     default: "yarn build"
     required: false
+  directory:
+    description: "Relative path to your package"
+    default: "."
+    required: false
 runs:
   using: composite
   steps:
@@ -52,12 +56,13 @@ runs:
     - name: Build package
       # TODO: run command from input
       shell: bash
-      run: yarn build
+      run: cd ${{ inputs.directory }} && yarn build
 
     - name: Setup PR package versions locally
       if: env.PUBLISH_PR_ARTIFACT == 1
       shell: bash
       run: |
+        cd ${{ inputs.directory }}
         prNumber=${{ github.event.number }}
         shortRev=$(git rev-parse --short ${{ github.sha }})
         preId=PR${prNumber}.${shortRev}
