@@ -51,7 +51,7 @@ runs:
     - name: Install dependencies
       if: env.PUBLISH_PR_ARTIFACT == 1
       shell: bash
-      run: yarn install --frozen-lockfile
+      run: yarn install --immutable
 
     - name: Build package
       # TODO: run command from input
