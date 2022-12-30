@@ -1,4 +1,4 @@
-import oauth2Server from 'oauth2-server-redwood'
+import oauth2Server from '@usekeyp/oauth2-server'
 import serverless from 'serverless-http'
 
 import { db } from 'src/lib/db'
@@ -11,7 +11,7 @@ export const handler = serverless(
     config: {
       // OIDC-Provider config, see https://github.com/panva/node-oidc-provider
       clients: [
-        {
+        {giut
           client_id: '123',
           client_secret: 'somesecret',
           redirect_uris: [
