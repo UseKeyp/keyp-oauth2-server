@@ -11,7 +11,7 @@ export const handler = serverless(
     config: {
       // OIDC-Provider config, see https://github.com/panva/node-oidc-provider
       clients: [
-        {giut
+        {
           client_id: '123',
           client_secret: 'somesecret',
           redirect_uris: [
